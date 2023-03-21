@@ -22,38 +22,29 @@ class AcGameMenu{
     this.$single_mode = this.$menu.find('.ac-game-menu-field-item-single-mode');
     this.$multi_mode = this.$menu.find('.ac-game-menu-field-item-multi-mode');
     this.$settings = this.$menu.find('.ac-game-menu-field-item-settings');
-
+	this.start(){
+		this.add_listening_events();
     }
-}
-class AcGamePlayground {
-    constructor(root) {
-        this.root = root;
-        this.$playground = $(`<div class="ac-game-playground"></div>`);
-
-        this.hide();
-        this.root.$ac_game.append(this.$playground);
-
-        this.start();
+	add_listening_events() {
+        let outer = this;
+        this.$single_mode.click(function(){
+            outer.hide();
+            outer.root.playground.show("single mode");
+        });
+        this.$multi_mode.click(function(){
+            outer.hide();
+            outer.root.playground.show("multi mode");
+        });
+        this.$settings.click(function(){
+            outer.root.settings.logout_on_remote();
+        });
     }
-	start(){
-
-	}
-	show(){
-		this.$playground.show();
-	}
-	hide(){
-		this.$playground.hide();
-	}
-}
-class AcGame{
-    constructor(id){
-        this.id=id;
-        this.$ac_game=$('#'+id);
-        this.menu=new AcGameMenu(this);
-        this.playground=new AcGamePlayground(this);
-        this.start();
+	
+    show() {  // 显示menu界面
+        this.$menu.show();
     }
-    start(){
-        
+
+    hide() {  // 关闭menu界面
+        this.$menu.hide();
     }
 }
