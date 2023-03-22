@@ -22,7 +22,9 @@ class AcGameMenu{
     this.$single_mode = this.$menu.find('.ac-game-menu-field-item-single-mode');
     this.$multi_mode = this.$menu.find('.ac-game-menu-field-item-multi-mode');
     this.$settings = this.$menu.find('.ac-game-menu-field-item-settings');
-	this.start(){
+	this.start();
+}
+    start(){
 		this.add_listening_events();
     }
 	add_listening_events() {
